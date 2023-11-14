@@ -76,7 +76,7 @@ def combine_pdfs(input_folder, output_folder, sheet):
     logger.setLevel(logging.DEBUG)
 
     # Create file handler which logs debug messages
-    debug_log_file_path = os.path.join(output_folder, 'debug.log')
+    debug_log_file_path = os.path.join(output_folder, 'debug.log').replace("\\", "/")
     fh = logging.FileHandler(debug_log_file_path)
     fh.setLevel(logging.DEBUG)
 

@@ -272,7 +272,19 @@ Sub SplitImport()
     While currentRow <= totalRows
         
         ' Check if we have reached the row limit
-        If currentRow - startRow + 1 >= 900 Then
+        If currentRow - startRow + 1 > 900 Then
+
+            ' Additional check to see if the next iteration would exceed 900 rows
+            Dim nextRowsCount As Long
+            nextRowsCount = 1
+    
+            While ws.Cells(currentRow + nextRowsCount, "E").Value = ws.Cells(currentRow, "E").Value
+                nextRowsCount = nextRowsCount + 1
+            Wend
+    
+            If currentRow - startRow + nextRowsCount > 900 Then
+                currentRow = currentRow - 1
+            End If
             
             ' Check if the next "Release" code is the same as the current one
             If ws.Cells(currentRow + 1, "E").Value = ws.Cells(currentRow, "E").Value Then

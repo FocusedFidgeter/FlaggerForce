@@ -376,7 +376,8 @@ Sub SortAndSend()
     Dim lastEmail As Integer
     Dim emailData As Worksheet
     Set emailData = ThisWorkbook.Sheets("Email Template")
-        
+    
+    SortFiles
     lastEmail = Application.WorksheetFunction.CountA(emailData.Range("B:B"))
     MsgBox ("Jot down this number so that you remember it for the second round of email submissions.\n\nLast row of data: " & lastEmail)
     

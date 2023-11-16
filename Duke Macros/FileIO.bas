@@ -13,11 +13,8 @@ Sub CombineTimesheets()
 
     ' Refresh the data we will use in the python script
     Sheets("TimesheetCombiner").Visible = True
-    Sheets("TimesheetCombiner").Select
     Selection.ListObject.QueryTable.Refresh BackgroundQuery:=True
-    Sheets("TimesheetCombiner").Select
     Sheets("TimesheetCombiner").Visible = False
-    Sheets("DukeInstructions").Select
 
     ' Set the path to the Python executable
     pythonExe = "python"

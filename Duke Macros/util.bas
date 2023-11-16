@@ -129,19 +129,24 @@ Sub SaveWorkbookAs(wb As Workbook, Path As String, fileName As String)
     ' Save a workbook with a given filename at the specified path
     wb.SaveAs fileName:=Path & fileName
     wb.Close SaveChanges:=False
-
 End Sub
 
 Function FormatColumn(column As String, format As String, Optional sheet As String)
     ' Apply formatting to the specified column in a worksheet
     ' (Note: The format parameter should be a valid Excel number format)
-
+    Dim ws As Worksheet
+    If sheet = vbNullString Then
+        Set ws = ActiveSheet
+    Else
+        Set ws = ThisWorkbook.Worksheets(sheet)
+    End If
+    ws.Range(column).NumberFormat = format
 End Function
 
 Function FormatColumnAsDate(ws As Worksheet, columnRange As String)
     ' Format a column range as date in the specified worksheet
+    ' (Note: This function modifies the worksheet data and structure, use with caution)
     ws.Range(columnRange).NumberFormat = "m/d/yyyy"
-
 End Function
 
 Function AddCalculationColumn(header As String, formula As String, lastRow As Integer, _
@@ -189,32 +194,45 @@ Function AddCalculationColumn(header As String, formula As String, lastRow As In
     Else
         wsTarget.Columns(targetColumn).ColumnWidth = columnWidth
     End If
-
 End Function
 
 Function AddFormulaAndCopyDown(ws As Worksheet, startCell As String, lastRow As Long)
     ' Add formula to a cell and copy it down to the last row in the specified worksheet
     ' (Note: This function modifies the worksheet data, use with caution)
-
+    ws.Range(startCell & "2").Copy
+    ws.Range(startCell & "3:" & startCell & lastRow).PasteSpecial Paste:=xlPasteFormulas
+    Application.CutCopyMode = False
 End Function
 
 Function AutoFilterColumn(ws As Worksheet, column As String, criteria As String, lastRow As Long)
     ' Apply an AutoFilter to a column based on given criteria in the specified worksheet
     ' (Note: This function modifies the worksheet data and structure, use with caution)
-
+    ws.Range(column & "1:" & column & lastRow).AutoFilter Field:=1, Criteria1:=criteria
 End Function
 
 Function DeleteRowsBasedOnCondition(ws As Worksheet, column As String, condition As String, lastRow As Long)
     ' Delete rows in the specified worksheet based on a given condition in a specific column
     ' (Note: This function modifies the worksheet data and structure, use with caution)
-
+    Dim i As Long
+    For i = lastRow To 2 Step -1
+        If ws.Cells(i, column).Value = condition Then
+            ws.Rows(i).Delete
+        End If
+    Next i
 End Function
 
-Sub CopyFormulasAndFilter(sheet As Worksheet, copyRange As String, filterField As Integer, filterCriteria As String)
+Function CopyFormulasAndFilter(sheet As Worksheet, copyRange As String, filterField As Integer, filterCriteria As String)
     ' Copy formulas and apply a filter in the specified worksheet based on a field and criteria
     ' (Note: This function modifies the worksheet data and structure, use with caution)
-
-End Sub
+    Dim lastRow As Long
+    lastRow = sheet.Cells(sheet.Rows.Count, "A").End(xlUp).Row
+    With sheet
+        .Range(copyRange & "2").Copy
+        .Range(copyRange & "3:" & copyRange & lastRow).PasteSpecial Paste:=xlPasteFormulas
+        .Range(copyRange & "1:" & copyRange & lastRow).AutoFilter Field:=filterField, Criteria1:=filterCriteria
+    End With
+    Application.CutCopyMode = False
+End Function
 
 Function GetLastFullReleaseRow(ws As Worksheet, startRow As Long, totalRows As Long) As Long
     ' Find the last full release code row in the specified worksheet
@@ -225,10 +243,9 @@ Function GetLastFullReleaseRow(ws As Worksheet, startRow As Long, totalRows As L
         currentRow = currentRow + 1
     Wend
     GetLastFullReleaseRow = currentRow
-
 End Function
 
-Sub CreateAndSendEmail(toRecipients As String, subject As String, htmlBody As String, attachmentsPaths As Collection, Optional action As String = "Send")
+Function CreateAndSendEmail(toRecipients As String, subject As String, htmlBody As String, attachmentsPaths As Collection, Optional action As String = "Send")
     ' Create and send an email with optional attachments using Outlook
     ' (Note: This function interacts with the user's email system and may require permission)
     Dim OutApp As Object
@@ -258,5 +275,4 @@ Sub CreateAndSendEmail(toRecipients As String, subject As String, htmlBody As St
     
     Set outmail = Nothing
     Set OutApp = Nothing
-
-End Sub
+End Function

@@ -7,15 +7,15 @@ from PyPDF2 import PdfReader, PdfWriter
 
 def combine_timesheets(input_folder, output_folder, sheet):
     """
-    Combines timesheets from the input folder into separate PDF files for each unique TC number.
-    
-    Parameters:
-    - input_folder (str): The folder path where the timesheet files are located.
-    - output_folder (str): The folder path where the combined PDF files will be saved.
-    - sheet (object): The sheet object containing the timesheet data.
-    
+    Combine multiple timesheets into a single PDF file for each unique TC number.
+
+    Args:
+        input_folder (str): The path to the folder containing the input timesheet files.
+        output_folder (str): The path to the folder where the combined PDF files will be saved.
+        sheet (Sheet): The Excel sheet containing the timesheet data.
+
     Returns:
-    None
+        None
     """
     unique_tc_numbers = set()  # Set to store unique TC numbers
     tc_records = {}  # Dictionary to store records for each TC number
@@ -72,11 +72,11 @@ def combine_timesheets(input_folder, output_folder, sheet):
     logger.setLevel(logging.DEBUG)
 
     # Create file handler which logs debug messages
-    debug_log_file_path = os.path.join(output_folder, 'debug.log').replace("\\", "/")
-    fh = logging.FileHandler(debug_log_file_path)
+    output_log_path = os.path.join(output_folder, "debug.log")
+    fh = logging.FileHandler(output_log_path)
     fh.setLevel(logging.DEBUG)
 
-    # Add the handlers to logger
+    # Add the handler to logger
     logger.addHandler(fh)
 
     # Log missing files
@@ -87,22 +87,21 @@ def combine_timesheets(input_folder, output_folder, sheet):
 
 def combine_invoices(invoice_folder, timesheet_folder, output_folder, sheet):
     """
-    Combines invoices and timesheets into a single PDF file.
-
+    Combine invoices from the given invoice folder and timesheets from the timesheet folder into a single PDF file.
+    
     Args:
-        invoice_folder (str): The directory containing the invoice files.
-        timesheet_folder (str): The directory containing the timesheet files.
-        output_folder (str): The directory where the combined PDF files will be saved.
-        sheet (Sheet): The sheet object representing the Excel sheet containing the data.
+        invoice_folder (str): The path to the folder containing the invoice files.
+        timesheet_folder (str): The path to the folder containing the timesheet files.
+        output_folder (str): The path to the folder where the combined PDF files will be saved.
+        sheet (object): The excel sheet object containing the data.
 
     Returns:
         None
 
     Raises:
-        FileNotFoundError: If any of the input files (invoice or timesheet) are not found.
-
+        FileNotFoundError: If the invoice file or timesheet file does not exist.
     """
-    # iterate through the rows starting from row 2 (headers are in row 1)
+    # iterate through the rows starting from row 2 (headers are on 1)
     for row, (tc_number, ffid, work_date, invoice) in enumerate(sheet.iter_rows(min_row=2, max_col=4, values_only=True), start=2):
         # PdfWriter for each invoice
         pdf_writer = PdfWriter()
@@ -143,11 +142,19 @@ def combine_invoices(invoice_folder, timesheet_folder, output_folder, sheet):
 
     print("Done combining invoices!")
 
+# Main function to handle user interaction and call combine_pdfs(in, out, sheet)
 def main():
     """
-    Initializes the main function.
-    This function prompts the user to select folders and files, and then performs
-    operations on the selected data.
+        Function to execute the main logic of the program.
+        The function prompts the user to select various folders and files using file dialogs.
+        It then loads an Excel file, retrieves a specific sheet, and performs operations on it.
+        Finally, it combines timesheets and invoices, and closes the Tkinter instance.
+
+        Parameters:
+        None
+
+        Returns:
+        None
     """
     root = Tk()
     root.withdraw()  # Hide the main window

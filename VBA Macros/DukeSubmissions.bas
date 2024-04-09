@@ -59,13 +59,6 @@ Sub refresh_cities()
     ThisWorkbook.Connections("Query - Duke_Ops_Centers").Refresh
 End Sub
 
-Function IsWorkBookOpen(Name As String) As Boolean
-    Dim xWb As Workbook
-    On Error Resume Next
-    Set xWb = Application.Workbooks.Item(Name)
-    IsWorkBookOpen = (Not xWb Is Nothing)
-End Function
-
 Sub Slow_n_SafeFormulas()
 ' This function exists because Paul couldn't figure out the data model
 '    needed to do this properly with Power Query.

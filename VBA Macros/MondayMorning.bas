@@ -450,9 +450,9 @@ Sub AddressCleanup()
         .Replace What:=". ", Replacement:="", LookAt:=xlPart, MatchCase:=False
         .Replace What:=" .", Replacement:="", LookAt:=xlPart, MatchCase:=False
         .Replace What:=".", Replacement:="", LookAt:=xlPart, MatchCase:=False
-        .Replace What:="•", Replacement:="-", LookAt:=xlPart, MatchCase:=False
-        .Replace What:="–", Replacement:="-", LookAt:=xlPart, MatchCase:=False
-        .Replace What:="—", Replacement:="-", LookAt:=xlPart, MatchCase:=False
+        .Replace What:="ï¿½", Replacement:="-", LookAt:=xlPart, MatchCase:=False
+        .Replace What:="ï¿½", Replacement:="-", LookAt:=xlPart, MatchCase:=False
+        .Replace What:="ï¿½", Replacement:="-", LookAt:=xlPart, MatchCase:=False
 
         ' Additional replacements for ordinal numbers
         Dim i As Integer

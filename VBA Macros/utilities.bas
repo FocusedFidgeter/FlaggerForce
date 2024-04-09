@@ -1,4 +1,4 @@
-Attribute VB_Name = "FileIO"
+Attribute VB_Name = "Utilities"
 Function ImportDatatoWorksheet(targetSheetName As String, targetRange As String, fileType As String)
 
     ' Declare variables
@@ -148,3 +148,43 @@ Function RefreshQueriesOnSheet(sheetName As String)
     'MsgBox "Queries on sheet '" & sheetName & "' have been refreshed.", vbInformation
 End Function
 
+Function IsWorkBookOpen(Name As String) As Boolean
+    Dim xWb As Workbook
+    On Error Resume Next
+    Set xWb = Application.Workbooks.Item(Name)
+    IsWorkBookOpen = (Not xWb Is Nothing)
+End Function
+
+Function MoveWithLog(fso As Object, source As String, folderPath As String, logFile As Object)
+    On Error Resume Next
+    fso.MoveFile source:=source, Destination:=folderPath & "\" & fso.GetFileName(source)
+    If Err.Number <> 0 Then
+        logFile.WriteLine "Failed to move: " & source
+        Err.Clear
+    End If
+    On Error GoTo 0
+End Function
+
+Function CopyWithLog(fso As Object, source As String, folderPath As String, logFile As Object)
+    On Error Resume Next
+    fso.CopyFile source:=source, Destination:=folderPath & "\" & fso.GetFileName(source)
+    If Err.Number <> 0 Then
+        logFile.WriteLine "Failed to copy: " & source
+        Err.Clear
+    End If
+    On Error GoTo 0
+End Function
+
+Function MarkMissingFile(cell As Range, filePath As String, markIfMissing As String, markIfExists As String)
+    If Dir(filePath) = "" Then
+        cell.Value = cell.Value & markIfMissing
+    Else
+        cell.Value = cell.Value & markIfExists
+    End If
+End Function
+
+Function Wait_a_minute()
+    Dim waitTime As Double
+    waitTime = Now + TimeValue("00:01:00") ' 1 minute
+    Application.Wait waitTime
+End Function

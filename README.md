@@ -29,6 +29,8 @@
 
 ### `MondayMorning.bas`, `PdesClosed.bas`, & `DukeSubmissions.bas`
 
+*A few noteable functions.*
+
 - `ClearOldData`: Clears old data from the worksheet allowing the Excel Workbook to be reused without duplicating the Macro code every time.
 - `SaveWOsToDataModel`: Saves `Work_Order` numbers to the data model so we can store the cleaned data for later.
 - `SaveINVsToDataModel`: Saves Invoice numbers to the data model so we can pair them to the cleaned `Work_Order`s.

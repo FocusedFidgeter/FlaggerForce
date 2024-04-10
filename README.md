@@ -9,7 +9,7 @@
 
 ## `VBA` [Macros](https://github.com/FocusedFidgeter/FlaggerForce/tree/main/VBA%20Macros) 📊
 
-### `Utilities.bas` [🔗]() 🔧
+### `Utilities.bas` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/VBA%20Macros/utilities.bas) 🔧
 
 *Helper functions for the other VBA subroutines.*
 
@@ -30,9 +30,9 @@
 - Reduced code redundancy. (you'll see old query refreshes using the standard notation as I have not found sought them all out yet)
 
 ### `Main.bas` ⚙️
-- `MondayMorning.bas`: [🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/VBA%20Macros/MondayMorning.bas)
-- `PdesClosed.bas` [🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/VBA%20Macros/PdesClosed.bas)
-- `DukeSubmissions.bas` [🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/VBA%20Macros/DukeSubmissions.bas)
+- `MondayMorning.bas`: [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/VBA%20Macros/MondayMorning.bas)
+- `PdesClosed.bas` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/VBA%20Macros/PdesClosed.bas)
+- `DukeSubmissions.bas` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/VBA%20Macros/DukeSubmissions.bas)
 
 *A few noteable functions.*
 
@@ -53,7 +53,7 @@
 
 ## `Python` [Scripts](https://github.com/FocusedFidgeter/FlaggerForce/tree/main/Python%20Scripts) 🐍
 
-### `Split Invoice Reports.pyw` [🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/Python%20Scripts/Split%20Invoice%20Reports.pyw) 📄
+### `Split Invoice Reports.pyw` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/Python%20Scripts/Split%20Invoice%20Reports.pyw) 📄
 
 *Task:* Split invoice reports into multiple files based on invoice number.
 
@@ -64,7 +64,7 @@
 
 - The department was spending *tens* of Labor Hours each week splitting these by hand across multiple clients.
 
-### `Duke- Combine Timesheets.pyw` [🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/Python%20Scripts/timesheet_combiner_duke.pyw) 📊
+### `Duke- Combine Timesheets.pyw` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/Python%20Scripts/timesheet_combiner_duke.pyw) 📊
 
 *Task:* Combine timesheets into one file.
 
@@ -77,7 +77,7 @@
     - We started with smaller and more acheiveable workloads, but became time consuming as the client started working with us more.
 - The GUI allowed others to use this script without my involvement.
 
-### `Verizon- Combine timesheets to INVs.pyw` [🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/Python%20Scripts/Verizon-%20Combine%20Timesheets%20to%20INVs.pyw) 📊
+### `Verizon- Combine timesheets to INVs.pyw` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/Python%20Scripts/Verizon-%20Combine%20Timesheets%20to%20INVs.pyw) 📊
 
 *Task:* Combine timesheets and Invoices into one file.
 
@@ -88,7 +88,7 @@
 
 - Again, the Department was spending *dozens* of Labor Hours each week concatenating PDFs by hand.
 
-### `Duke- Move_or_Delete INVs & CTRs.pyw` [🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/Python%20Scripts/Duke-%20Move_or_Delete%20INVs%20%26%20CTRs.pyw) 📁
+### `Duke- Move_or_Delete INVs & CTRs.pyw` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/Python%20Scripts/Duke-%20Move_or_Delete%20INVs%20%26%20CTRs.pyw) 📁
 
 *Task:* Move invoices and CTRs from one folder to another.
 
@@ -102,4 +102,4 @@
 - So, we moved the files to subfolders instead. This enabled us to find and fix the Invoices if a client were to dispute one.
     - Maybe we captured the wrong `Work_Order` number, or the wrong date.
     - Or maybe the old `Rate` was used after a contract was updated.
-- I later used an old version to experiment and learn `TKinter`-- Leading to this current version.
+- I later used an old version to experiment and learn `TKinter`- Leading to this current version.

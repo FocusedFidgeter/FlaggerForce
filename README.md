@@ -1,5 +1,7 @@
 # Paul's Python & VBA Projects
 
+*This code won't make sense without the `.xlsm` files; Instead these demo style, patterns, & algorithms.*
+
 - All the VBA subroutines will be related to `Duke`, because it was the most manual process when I started.
     - There is data cleaning that was automated, files are created, reports are emailed within the company, and Invoices are submitted via email.
 - All of the Python files will refer to `Duke`, or `Verizon`, but that is just the nomenclature used inhouse.

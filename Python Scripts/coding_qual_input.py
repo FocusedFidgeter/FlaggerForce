@@ -5,7 +5,7 @@ def decode(message_file):
         for line in file:
             number, word = line.split(' ', 1)
             number_to_word[int(number)] = word.strip()
-    
+
     # Determine how many levels in the pyramid based on the largest number
     max_number = max(number_to_word.keys())
     levels = 1
@@ -24,5 +24,5 @@ def decode(message_file):
     return ' '.join(message_words)
 
 # Assuming the encoded message is stored in 'message.txt'
-decoded_message = decode('message.txt')
+decoded_message = decode('./Python Scripts/message.txt')
 print(decoded_message)

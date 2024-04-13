@@ -1,13 +1,15 @@
-# Paul's Python & VBA Projects
+# Python & VBA Projects - Flagger Force Traffic Control
+
+*This code won't make sense without the `.xlsm` files; Instead these demo style, patterns, & algorithms.*
 
 - All the VBA subroutines will be related to `Duke`, because it was the most manual process when I started.
     - There is data cleaning that was automated, files are created, reports are emailed within the company, and Invoices are submitted via email.
 - All of the Python files will refer to `Duke`, or `Verizon`, but that is just the nomenclature used inhouse.
     - The more approachable terms would be `generic`, or `exception`.
 
-## `VBA` 📊
+## `VBA` [Macros](https://github.com/FocusedFidgeter/FlaggerForce/tree/main/VBA%20Macros) 📊
 
-### `Utilities.bas` 🔧
+### `Utilities.bas` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/VBA%20Macros/utilities.bas) 🔧
 
 *Helper functions for the other VBA subroutines.*
 
@@ -27,7 +29,10 @@
 #### Problem this corrected:
 - Reduced code redundancy. (you'll see old query refreshes using the standard notation as I have not found sought them all out yet)
 
-### `MondayMorning.bas`, `PdesClosed.bas`, & `DukeSubmissions.bas` ⚙️
+### `Main.bas` ⚙️
+- `MondayMorning.bas`: [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/VBA%20Macros/MondayMorning.bas)
+- `PdesClosed.bas` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/VBA%20Macros/PdesClosed.bas)
+- `DukeSubmissions.bas` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/VBA%20Macros/DukeSubmissions.bas)
 
 *A few noteable functions.*
 
@@ -42,13 +47,13 @@
 
 #### Problem this corrected:
 
-- The FinanceDepartment was spending **dozens** of Labor Hours each week performing mundane tasks that no one had thought to make less time-consuming.
+- The FinanceDepartment was spending *dozens* of Labor Hours each week performing mundane tasks that no one had thought to make less time-consuming.
     - Hand typing the correct info into PDFs or Excel files.
     - Manually creating and editing PDFs even after they were corrected in an earlier process inside Excel.
 
-## `Python` 🐍
+## `Python` [Scripts](https://github.com/FocusedFidgeter/FlaggerForce/tree/main/Python%20Scripts) 🐍
 
-### `Split Invoice Reports.pyw` 📄
+### `Split Invoice Reports.pyw` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/Python%20Scripts/Split%20Invoice%20Reports.pyw) 📄
 
 *Task:* Split invoice reports into multiple files based on invoice number.
 
@@ -57,9 +62,9 @@
 
 #### Problem this corrected:
 
-- The department was spending **tens** of Labor Hours each week splitting these by hand across multiple clients.
+- The department was spending *tens* of Labor Hours each week splitting these by hand across multiple clients.
 
-### `Duke- Combine Timesheets.pyw` 📊
+### `Duke- Combine Timesheets.pyw` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/Python%20Scripts/timesheet_combiner_duke.pyw) 📊
 
 *Task:* Combine timesheets into one file.
 
@@ -68,11 +73,11 @@
 
 #### Problem this corrected:
 
-- The Department was spending tens of Labor Hours each week doing this by hand.
+- The Department was spending tens of Labor Hours each week concatenating PDFs by hand.
     - We started with smaller and more acheiveable workloads, but became time consuming as the client started working with us more.
 - The GUI allowed others to use this script without my involvement.
 
-### `Verizon- Combine timesheets to INVs.pyw` 📊
+### `Verizon- Combine timesheets to INVs.pyw` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/Python%20Scripts/Verizon-%20Combine%20Timesheets%20to%20INVs.pyw) 📊
 
 *Task:* Combine timesheets and Invoices into one file.
 
@@ -81,9 +86,9 @@
 
 #### Problem this corrected:
 
-- Again, the Department was spending **dozens** of Labor Hours each week doing this by hand.
+- Again, the Department was spending *dozens* of Labor Hours each week concatenating PDFs by hand.
 
-### `Duke- Move_or_Delete INVs & CTRs.pyw` 📁
+### `Duke- Move_or_Delete INVs & CTRs.pyw` [link 🔗](https://github.com/FocusedFidgeter/FlaggerForce/blob/main/Python%20Scripts/Duke-%20Move_or_Delete%20INVs%20%26%20CTRs.pyw) 📁
 
 *Task:* Move invoices and CTRs from one folder to another.
 
@@ -92,9 +97,9 @@
 
 #### Problem this corrected:
 
-- There were just too many files within one folder, and no organization.
+- This was *mainly written as a helper script* when testing the VBA that sorted the files in the first place.
+    - There were just too many files within one folder, and no organization.
 - So, we moved the files to subfolders instead. This enabled us to find and fix the Invoices if a client were to dispute one.
     - Maybe we captured the wrong `Work_Order` number, or the wrong date.
     - Or maybe the old `Rate` was used after a contract was updated.
-- This was *mainly written as a helper script* when testing the VBA that sorted the files in the first place.
-- I later used this to experiment and learn `TKinter`.
+- I later used an old version to experiment and learn `TKinter`- Leading to this current version.

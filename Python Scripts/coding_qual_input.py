@@ -1,33 +1,28 @@
 def decode(message_file):
-    # Read the content of the file
+    # Read the file and create a mapping of numbers to words
+    number_to_word = {}
     with open(message_file, 'r') as file:
-        lines = file.readlines()
+        for line in file:
+            number, word = line.split(' ', 1)
+            number_to_word[int(number)] = word.strip()
+    
+    # Determine how many levels in the pyramid based on the largest number
+    max_number = max(number_to_word.keys())
+    levels = 1
+    while (levels * (levels + 1)) // 2 <= max_number:
+        levels += 1
+    levels -= 1  # Adjust because we'd go one level too high in the loop
 
-    # Create a dictionary to map numbers to words
-    number_word_map = {}
-    for line in lines:
-        number, word = line.strip().split(' ', 1)
-        number_word_map[int(number)] = word
-
-    # Determine the number of lines in the pyramid
-    # The number of lines in the pyramid is the smallest integer n
-    # such that sum of first n natural numbers is greater than or equal to the largest number in the map
-    largest_number = max(number_word_map.keys())
-    n = 0
-    while sum(range(1, n + 1)) < largest_number:
-        n += 1
-
-    # Extract the words at the end of each pyramid line
+    # Extract the words that correspond to the last number in each pyramid level
     message_words = []
-    for i in range(1, n + 1):
-        line_end_number = sum(range(1, i + 1))
-        if line_end_number in number_word_map:
-            message_words.append(number_word_map[line_end_number])
+    for level in range(1, levels + 1):
+        end_number_of_level = (level * (level + 1)) // 2
+        if end_number_of_level in number_to_word:
+            message_words.append(number_to_word[end_number_of_level])
+    
+    # Join the words to form the secret message
+    return ' '.join(message_words)
 
-    # Join the words to form the decoded message
-    decoded_message = ' '.join(message_words)
-    return decoded_message
-
-# Example usage:
-message = decode("coding_qual_input.txt")
-print(message)
+# Assuming the encoded message is stored in 'message.txt'
+decoded_message = decode('message.txt')
+print(decoded_message)
